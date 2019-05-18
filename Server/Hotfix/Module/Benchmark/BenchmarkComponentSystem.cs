@@ -6,22 +6,23 @@ using ETModel;
 namespace ETHotfix
 {
 	[ObjectSystem]
-	public class BenchmarkComponentSystem : AwakeSystem<BenchmarkComponent, IPEndPoint>
+	public class BenchmarkComponentSystem : AwakeSystem<BenchmarkComponent, string>
 	{
-		public override void Awake(BenchmarkComponent self, IPEndPoint a)
+		public override void Awake(BenchmarkComponent self, string a)
 		{
 			self.Awake(a);
 		}
 	}
 
-	public static class BenchmarkComponentEx
+	public static class BenchmarkComponentHelper
 	{
-		public static void Awake(this BenchmarkComponent self, IPEndPoint ipEndPoint)
+		public static void Awake(this BenchmarkComponent self, string address)
 		{
 			try
 			{
+				IPEndPoint ipEndPoint = NetworkHelper.ToIPEndPoint(address);
 				NetOuterComponent networkComponent = Game.Scene.GetComponent<NetOuterComponent>();
-				for (int i = 0; i < 100; i++)
+				for (int i = 0; i < 2000; i++)
 				{
 					self.TestAsync(networkComponent, ipEndPoint, i);
 				}
@@ -46,10 +47,6 @@ namespace ETHotfix
 					}
 				}
 			}
-			catch (RpcException e)
-			{
-				Log.Error(e);
-			}
 			catch (Exception e)
 			{
 				Log.Error(e);
@@ -71,7 +68,7 @@ namespace ETHotfix
 				long time2 = TimeHelper.ClientNow();
 				long time = time2 - self.time1;
 				self.time1 = time2;
-				Log.Info($"Benchmark k: {self.k} 每10W次耗时: {time} ms");
+				Log.Info($"Benchmark k: {self.k} 每10W次耗时: {time} ms {session.Network.Count}");
 			}
 			catch (Exception e)
 			{

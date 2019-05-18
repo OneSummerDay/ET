@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace ETModel
+﻿namespace ETModel
 {
-	public class ActorMessageHandlerAttribute : Attribute
+	public class ActorMessageHandlerAttribute : BaseAttribute
 	{
 		public AppType Type { get; }
 

@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace ETModel
 {
 	[ObjectSystem]
-	public class AppManagerComponentStartSystem : StartSystem<AppManagerComponent>
+	public class AppManagerComponentAwakeSystem : AwakeSystem<AppManagerComponent>
 	{
-		public override void Start(AppManagerComponent self)
+		public override void Awake(AppManagerComponent self)
 		{
-			self.Start();
+			self.Awake();
 		}
 	}
 
@@ -18,10 +19,10 @@ namespace ETModel
 	{
 		private readonly Dictionary<int, Process> processes = new Dictionary<int, Process>();
 
-		public void Start()
+		public void Awake()
 		{
 			string[] ips = NetHelper.GetAddressIPs();
-			StartConfig[] startConfigs = Game.Scene.GetComponent<StartConfigComponent>().GetAll();
+			StartConfig[] startConfigs = StartConfigComponent.Instance.GetAll();
 			
 			foreach (StartConfig startConfig in startConfigs)
 			{
@@ -40,29 +41,22 @@ namespace ETModel
 				StartProcess(startConfig.AppId);
 			}
 
-			this.WatchProcessAsync();
+			this.WatchProcessAsync().Coroutine();
 		}
 
 		private void StartProcess(int appId)
 		{
 			OptionComponent optionComponent = Game.Scene.GetComponent<OptionComponent>();
-			StartConfigComponent startConfigComponent = Game.Scene.GetComponent<StartConfigComponent>();
+			StartConfigComponent startConfigComponent = StartConfigComponent.Instance;
 			string configFile = optionComponent.Options.Config;
 			StartConfig startConfig = startConfigComponent.Get(appId);
-#if __MonoCS__
-			const string exe = @"dotnet";
+			const string exe = "dotnet";
 			string arguments = $"App.dll --appId={startConfig.AppId} --appType={startConfig.AppType} --config={configFile}";
-#else
-			const string exe = @"dotnet";
-			string arguments = $"App.dll --appId={startConfig.AppId} --appType={startConfig.AppType} --config={configFile}";
-#endif
 
 			Log.Info($"{exe} {arguments}");
 			try
 			{
-				ProcessStartInfo info = new ProcessStartInfo { FileName = exe, Arguments = arguments, CreateNoWindow = true, UseShellExecute = false };
-
-				Process process = Process.Start(info);
+				Process process = ProcessHelper.Run(exe, arguments);
 				this.processes.Add(startConfig.AppId, process);
 			}
 			catch (Exception e)
@@ -74,7 +68,7 @@ namespace ETModel
 		/// <summary>
 		/// 监控启动的进程,如果进程挂掉了,重新拉起
 		/// </summary>
-		private async void WatchProcessAsync()
+		private async ETVoid WatchProcessAsync()
 		{
 			long instanceId = this.InstanceId;
 			

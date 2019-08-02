@@ -302,6 +302,7 @@
     <Compile Include="Assets\Model\Module\Config\ConfigComponent.cs" />
     <Compile Include="Assets\Model\Module\Config\ConfigHelper.cs" />
     <Compile Include="Assets\Model\Module\Config\IConfig.cs" />
+    <Compile Include="Assets\Model\Module\CoroutineLock\CoroutineLockComponent.cs" />
     <Compile Include="Assets\Model\Module\Demo\AnimatorComponent.cs" />
     <Compile Include="Assets\Model\Module\Demo\CameraComponent.cs" />
     <Compile Include="Assets\Model\Module\Demo\Config\UnitConfig.cs" />

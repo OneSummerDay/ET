@@ -1,6 +1,6 @@
 using PF;
 
-namespace ETModel
+namespace ET
 {
     [ObjectSystem]
     public class PathfindingComponentAwakeSystem : AwakeSystem<PathfindingComponent>
@@ -19,7 +19,7 @@ namespace ETModel
         }
     }
     
-    public class PathfindingComponent: Component
+    public class PathfindingComponent: Entity
     {
         public PathReturnQueue PathReturnQueue;
         

@@ -105,12 +105,22 @@ ET框架的服务端是一个强大灵活的分布式服务端架构，完全可
 [ET新手教程-初见主讲](https://pan.baidu.com/s/1a5-j2R5QctZpC9n3sMC9QQ) 密码: ru1j  
 [ET新手教程新版-初见主讲](https://www.bilibili.com/video/av33280463/?redirectFrom=h5)  
 [ET在Mac上运行指南-L主讲](https://pan.baidu.com/s/1VUQbdd1Yio7ULFXwAv7X7A) 密码: l3e3  
+[ET框架系列教程-烟雨主讲-6.0版本](https://space.bilibili.com/33595745/favlist?fid=759596845&ftype=create)
 
 .net core 游戏资源分享  
 [2D物理引擎Box2D](https://github.com/Zonciu/Box2DSharp)  
 [各种dotnet core项目收集](https://github.com/thangchung/awesome-dotnet-core)  
 
 __讨论QQ群 : 474643097__
+
+# ET 6.0发布beta版! 
+1.协程锁功能，解决异步队列的大杀器  
+2.抽象出Scene的概念,realm gate map location等等,都是一个个scene, 进程变成了容器，可以容纳各种Scene  
+3.内网消息全部使用Actor消息，一个Scene也是一个actor  
+4.升级到netcore3.0
+5.还有大量更新,等你去挖掘,这是beta版本,暂时ilrt没有调通,只用来学习思想,不保证正确,出了bug不要怪我  
+6.招聘一个中级渲染, 工作地点厦门,待遇优厚  
+......
 
 # ET 5.0发布! 5.0将是一个长期支持版本，之后发现的bug，5.0也会进行修复  
 1.增加了服务端3d recast寻路功能，客户端导出数据，服务端使用，做mmo及其方便  

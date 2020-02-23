@@ -1,38 +1,70 @@
-﻿namespace ETModel
+﻿namespace ET
 {
-	public static class SceneType
-	{
-		public const string Share = "Share";
-		public const string Game = "Game";
-		public const string Login = "Login";
-		public const string Lobby = "Lobby";
-		public const string Map = "Map";
-		public const string Launcher = "Launcher";
-		public const string Robot = "Robot";
-		public const string RobotClient = "RobotClient";
-		public const string Realm = "Realm";
-	}
-	
-	public sealed class Scene: Entity
-	{
-		public string Name { get; set; }
-
-		public Scene()
-		{
-		}
-
-		public Scene(long id): base(id)
-		{
-		}
-
-		public override void Dispose()
-		{
-			if (this.IsDisposed)
-			{
-				return;
-			}
-
-			base.Dispose();
-		}
-	}
+    public sealed class Scene: Entity
+    {
+        public int Zone { get; }
+        public SceneType SceneType { get; }
+        public string Name { get; }
+        
+        public Scene(long id, int zone, SceneType sceneType, string name)
+        {
+            this.Id = id;
+            this.InstanceId = id;
+            this.Zone = zone;
+            this.SceneType = sceneType;
+            this.Name = name;
+            this.IsCreate = true;
+        }
+        
+        public Scene Get(long id)
+        {
+            return (Scene)this.Children?[id];
+        }
+        
+        public new Entity Domain
+        {
+            get
+            {
+                return this.domain;
+            }
+            set
+            {
+                this.domain = value;
+            }
+        }
+		
+        public new Entity Parent
+        {
+            get
+            {
+                return this.parent;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    this.parent = this;
+                    return;
+                }
+                this.parent = value;
+                this.parent.Children.Add(this.Id, this);
+#if UNITY_EDITOR
+                this.ViewGO.transform.SetParent(this.parent.ViewGO.transform, false);
+#endif
+            }
+        }
+    }
+    
+    public static class SceneEx
+    {
+        public static int DomainZone(this Entity entity)
+        {
+            return ((Scene) entity.Domain).Zone;
+        }
+        
+        public static Scene DomainScene(this Entity entity)
+        {
+            return (Scene) entity.Domain;
+        }
+    }
 }

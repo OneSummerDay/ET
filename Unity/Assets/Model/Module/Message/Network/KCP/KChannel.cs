@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace ETModel
+namespace ET
 {
 	public struct WaitSendBuffer
 	{
@@ -354,10 +354,6 @@ namespace ETModel
 
 				this.OnRead(this.memoryStream);
 			}
-		}
-
-		public override void Start()
-		{
 		}
 
 		public void Output(IntPtr bytes, int count)

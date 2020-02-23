@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using PF;
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
     [ObjectSystem]
     public class ABPathAwakeSystem : AwakeSystem<ABPathWrap, Vector3, Vector3>
@@ -13,7 +13,7 @@ namespace ETModel
         }
     }
     
-    public class ABPathWrap: Component
+    public class ABPathWrap: Entity
     {
         public ABPath Path { get; private set; }
 

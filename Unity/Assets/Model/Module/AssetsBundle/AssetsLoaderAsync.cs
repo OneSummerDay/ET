@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
 	[ObjectSystem]
 	public class AssetsLoaderAsyncAwakeSystem : AwakeSystem<AssetsLoaderAsync, AssetBundle>
@@ -22,7 +22,7 @@ namespace ETModel
 		}
 	}
 
-	public class AssetsLoaderAsync : Component
+	public class AssetsLoaderAsync : Entity
 	{
 		private AssetBundle assetBundle;
 

@@ -20,26 +20,32 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Libs\**" />
+    <Compile Include="..\..\Unity\Assets\Model\Base\Async\AsyncETTaskCompletedMethodBuilder.cs">
+      <Link>Base\Async\AsyncETTaskCompletedMethodBuilder.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\AsyncETTaskMethodBuilder.cs">
       <Link>Base\Async\AsyncETTaskMethodBuilder.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\AsyncETVoidMethodBuilder.cs">
       <Link>Base\Async\AsyncETVoidMethodBuilder.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Async\AsyncMethodBuilderAttribute.cs">
+      <Link>Base\Async\AsyncMethodBuilderAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETCancellationToken.cs">
       <Link>Base\Async\ETCancellationToken.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETCancellationTokenSource.cs">
-      <Link>Base\Async\ETCancellationTokenSource.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETTask.cs">
       <Link>Base\Async\ETTask.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETTaskCompleted.cs">
+      <Link>Base\Async\ETTaskCompleted.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETTaskCompletionSource.cs">
       <Link>Base\Async\ETTaskCompletionSource.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETTaskFactory.cs">
-      <Link>Base\Async\ETTaskFactory.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETTaskHelper.cs">
+      <Link>Base\Async\ETTaskHelper.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\ETVoid.cs">
       <Link>Base\Async\ETVoid.cs</Link>
@@ -47,8 +53,20 @@
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\IAwaiter.cs">
       <Link>Base\Async\IAwaiter.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Base\Async\MoveNextRunner.cs">
-      <Link>Base\Async\MoveNextRunner.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Entity\EntitySceneFactory.cs">
+      <Link>Base\Entity\EntitySceneFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Entity\Game.cs">
+      <Link>Base\Entity\Game.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Entity\Scene.cs">
+      <Link>Base\Entity\Scene.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Entity\SceneType.cs">
+      <Link>Base\Entity\SceneType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Entity\TimerComponent.cs">
+      <Link>Base\Entity\TimerComponent.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Helper\MongoHelper.cs">
       <Link>Base\Helper\MongoHelper.cs</Link>
@@ -73,9 +91,6 @@
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\EntityFactory.cs">
       <Link>Base\Object\EntityFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Base\Object\EventProxy.cs">
-      <Link>Base\Object\EventProxy.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\EventSystem.cs">
       <Link>Base\Object\EventSystem.cs</Link>
@@ -134,21 +149,6 @@
     <Compile Include="..\..\Unity\Assets\Model\Base\UnOrderMultiMapSet.cs">
       <Link>Base\UnOrderMultiMapSet.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Entity\EntitySceneFactory.cs">
-      <Link>Entity\EntitySceneFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Entity\Game.cs">
-      <Link>Entity\Game.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Entity\Scene.cs">
-      <Link>Entity\Scene.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Entity\SceneType.cs">
-      <Link>Entity\SceneType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Entity\TimerComponent.cs">
-      <Link>Entity\TimerComponent.cs</Link>
-    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Module\ActorLocation\IActorLocationMessage.cs">
       <Link>Module\ActorLocation\IActorLocationMessage.cs</Link>
     </Compile>
@@ -194,8 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Unity\Assets\Model\Base\DoubleMap.cs" Link="Base\DoubleMap.cs" />
-    <Compile Include="..\..\Unity\Assets\Model\Base\Event\Env.cs" Link="Base\Event\Env.cs" />
-    <Compile Include="..\..\Unity\Assets\Model\Base\Event\EnvKey.cs" Link="Base\Event\EnvKey.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Event\EventAttribute.cs" Link="Base\Event\EventAttribute.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Event\IEvent.cs" Link="Base\Event\IEvent.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Helper\ByteHelper.cs" Link="Base\Helper\ByteHelper.cs" />
@@ -216,7 +214,6 @@
     <Compile Include="..\..\Unity\Assets\Model\Base\RecyclableMemoryStream\Events.cs" Link="Base\RecyclableMemoryStream\Events.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\RecyclableMemoryStream\RecyclableMemoryStream.cs" Link="Base\RecyclableMemoryStream\RecyclableMemoryStream.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\RecyclableMemoryStream\RecyclableMemoryStreamManager.cs" Link="Base\RecyclableMemoryStream\RecyclableMemoryStreamManager.cs" />
-    <Compile Include="..\..\Unity\Assets\Model\Base\TryLocker.cs" Link="Base\TryLocker.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\UnOrderMultiMap.cs" Link="Base\UnOrderMultiMap.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Module\Config\ACategory.cs" Link="Module\Config\ACategory.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Module\Config\ConfigAttribute.cs" Link="Module\Config\ConfigAttribute.cs" />
@@ -267,136 +264,6 @@
     <Compile Include="..\..\Unity\Assets\Model\Module\Numeric\NumericWatcherComponent.cs">
       <Link>Module\Numeric\NumericWatcherComponent.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\ArrayPool.cs">
-      <Link>Module\Pathfinding\Recast\ArrayPool.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\AstarChecksum.cs">
-      <Link>Module\Pathfinding\Recast\AstarChecksum.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\AStarConfig.cs">
-      <Link>Module\Pathfinding\Recast\AStarConfig.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\AstarDeserializer.cs">
-      <Link>Module\Pathfinding\Recast\AstarDeserializer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\AstarMath.cs">
-      <Link>Module\Pathfinding\Recast\AstarMath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\AstarMemory.cs">
-      <Link>Module\Pathfinding\Recast\AstarMemory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\BBTree.cs">
-      <Link>Module\Pathfinding\Recast\BBTree.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\BinaryHeap.cs">
-      <Link>Module\Pathfinding\Recast\BinaryHeap.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\EuclideanEmbedding.cs">
-      <Link>Module\Pathfinding\Recast\EuclideanEmbedding.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Funnel.cs">
-      <Link>Module\Pathfinding\Recast\Funnel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\GraphNode.cs">
-      <Link>Module\Pathfinding\Recast\GraphNode.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\GraphTransform.cs">
-      <Link>Module\Pathfinding\Recast\GraphTransform.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Guid.cs">
-      <Link>Module\Pathfinding\Recast\Guid.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\INavmesh.cs">
-      <Link>Module\Pathfinding\Recast\INavmesh.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Int3.cs">
-      <Link>Module\Pathfinding\Recast\Int3.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\IntRect.cs">
-      <Link>Module\Pathfinding\Recast\IntRect.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\ListPool.cs">
-      <Link>Module\Pathfinding\Recast\ListPool.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\NavGraph.cs">
-      <Link>Module\Pathfinding\Recast\NavGraph.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\NavmeshBase.cs">
-      <Link>Module\Pathfinding\Recast\NavmeshBase.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\NavmeshTile.cs">
-      <Link>Module\Pathfinding\Recast\NavmeshTile.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\NN.cs">
-      <Link>Module\Pathfinding\Recast\NN.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\ObjectPool.cs">
-      <Link>Module\Pathfinding\Recast\ObjectPool.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Path.cs">
-      <Link>Module\Pathfinding\Recast\Path.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\ABPath.cs">
-      <Link>Module\Pathfinding\Recast\Pathfinders\ABPath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\ConstantPath.cs">
-      <Link>Module\Pathfinding\Recast\Pathfinders\ConstantPath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\FleePath.cs">
-      <Link>Module\Pathfinding\Recast\Pathfinders\FleePath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\FloodPath.cs">
-      <Link>Module\Pathfinding\Recast\Pathfinders\FloodPath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\FloodPathTracer.cs">
-      <Link>Module\Pathfinding\Recast\FloodPathTracer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\MultiTargetPath.cs">
-      <Link>Module\Pathfinding\Recast\Pathfinders\MultiTargetPath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\RandomPath.cs">
-      <Link>Module\Pathfinding\Recast\Pathfinders\RandomPath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\XPath.cs">
-      <Link>Module\Pathfinding\Recast\Pathfinders\XPath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\PathFindHelper.cs">
-      <Link>Module\Pathfinding\Recast\PathFindHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\PathHandler.cs">
-      <Link>Module\Pathfinding\Recast\PathHandler.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\PathPool.cs">
-      <Link>Module\Pathfinding\Recast\PathPool.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\PathProcessor.cs">
-      <Link>Module\Pathfinding\Recast\PathProcessor.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\PathReturnQueue.cs">
-      <Link>Module\Pathfinding\Recast\PathReturnQueue.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\RecastGenerator.cs">
-      <Link>Module\Pathfinding\Recast\RecastGenerator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Serialization\JsonSerializer.cs">
-      <Link>Module\Pathfinding\Recast\Serialization\JsonSerializer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Serialization\SimpleZipReplacement.cs">
-      <Link>Module\Pathfinding\Recast\Serialization\SimpleZipReplacement.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\Serialization\TinyJson.cs">
-      <Link>Module\Pathfinding\Recast\Serialization\TinyJson.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\ThreadControlQueue.cs">
-      <Link>Module\Pathfinding\Recast\ThreadControlQueue.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs">
-      <Link>Module\Pathfinding\Recast\TriangleMeshNode.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs">
-      <Link>Module\Pathfinding\Recast\WindowsStoreCompatibility.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\Other\AppType.cs" Link="Other\AppType.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.2.1" />

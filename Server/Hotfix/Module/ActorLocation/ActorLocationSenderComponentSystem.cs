@@ -3,7 +3,6 @@
 
 namespace ET
 {
-    [ObjectSystem]
     public class ActorLocationSenderComponentAwakeSystem : AwakeSystem<ActorLocationSenderComponent>
     {
         public override void Awake(ActorLocationSenderComponent self)
@@ -16,7 +15,6 @@ namespace ET
         }
     }
     
-    [ObjectSystem]
     public class ActorLocationSenderComponentDestroySystem: DestroySystem<ActorLocationSenderComponent>
     {
         public override void Destroy(ActorLocationSenderComponent self)
@@ -29,7 +27,7 @@ namespace ET
     
     public static class ActorLocationSenderComponentSystem
     {
-        public static void Check(this ActorLocationSenderComponent self)
+        public static void Check(this ActorLocationSenderComponent self, bool isTimeOut)
         {
             using (ListComponent<long> list = EntityFactory.Create<ListComponent<long>>(self.Domain))
             {

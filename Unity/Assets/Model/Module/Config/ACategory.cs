@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace ET
 {
-	public abstract class ACategory : Object
+	public abstract class ACategory: ISupportInitialize
 	{
 		public abstract Type ConfigType { get; }
+
+		public virtual void BeginInit()
+		{
+		}
+
+		public virtual void EndInit()
+		{
+		}
 	}
 
 	/// <summary>
@@ -19,26 +28,15 @@ namespace ET
 
 		public override void BeginInit()
 		{
-			this.dict = new Dictionary<long, T>();
-
 			string configStr = ConfigHelper.GetText(typeof(T).Name);
 
-			foreach (string str in configStr.Split(new[] { "\n" }, StringSplitOptions.None))
+			try
 			{
-				try
-				{
-					string str2 = str.Trim();
-					if (str2 == "")
-					{
-						continue;
-					}
-					T t = ConfigHelper.ToObject<T>(str2);
-					this.dict.Add(t.Id, t);
-				}
-				catch (Exception e)
-				{
-					throw new Exception($"parser json fail: {str}", e);
-				}
+				this.dict = ConfigHelper.ToObject<Dictionary<long, T>>(configStr);
+			}
+			catch (Exception e)
+			{
+				throw new Exception($"parser json fail: {configStr}", e);
 			}
 		}
 

@@ -1,5 +1,4 @@
-﻿using PF;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ET
 {
@@ -9,7 +8,6 @@ namespace ET
 		Npc
 	}
 
-	[ObjectSystem]
 	public class UnitAwakeSystem : AwakeSystem<Unit, UnitType>
 	{
 		public override void Awake(Unit self, UnitType a)

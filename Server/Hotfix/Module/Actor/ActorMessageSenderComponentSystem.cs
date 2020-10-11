@@ -3,7 +3,6 @@
 
 namespace ET
 {
-    [ObjectSystem]
     public class ActorMessageSenderComponentAwakeSystem : AwakeSystem<ActorMessageSenderComponent>
     {
         public override void Awake(ActorMessageSenderComponent self)
@@ -14,7 +13,6 @@ namespace ET
         }
     }
     
-    [ObjectSystem]
     public class ActorMessageSenderComponentDestroySystem: DestroySystem<ActorMessageSenderComponent>
     {
         public override void Destroy(ActorMessageSenderComponent self)
@@ -28,7 +26,7 @@ namespace ET
     
     public static class ActorMessageSenderComponentSystem
     {
-        public static void Check(this ActorMessageSenderComponent self)
+        public static void Check(this ActorMessageSenderComponent self, bool isTimeOut)
         {
             long timeNow = TimeHelper.Now();
             foreach ((int key, ActorMessageSender value) in self.requestCallback)
